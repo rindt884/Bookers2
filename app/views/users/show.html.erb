@@ -1,3 +1,7 @@
+<div class="text-success">
+  <%= flash[:notice] %>
+</div>
+
 <%= render 'books/list', book: @book, user: @user %>
 
 <div>
@@ -10,7 +14,7 @@
           <th>Opinion</th>
         </tr>
       </thead>
-      
+
       <div>
       <% @books.each do |book| %>
         <tr>

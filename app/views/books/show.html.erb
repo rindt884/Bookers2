@@ -1,3 +1,11 @@
+<div class="text-success">
+  <%= flash[:notice] %>
+</div>
+
+<div class="text-success">
+  <%= flash[:alert] %>
+</div>
+
 <%= render 'list', book: @book_new, user: @book.user %>
 
 <div>
