@@ -1,27 +1,42 @@
-<div class="text-success">
-  <%= flash[:notice] %>
-</div>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
+  <div class="text-success">
+    <%= flash[:notice] %>
+  </div>
 
-<div class="text-success">
-  <%= flash[:alert] %>
-</div>
-
-<%= render 'list', book: @book_new, user: @book.user %>
-
-<div>
-  <table>
-    <th><%= image_tag @book.user.get_profile_image(100,100) %><br>
-        <%= link_to @book.user.name, @book.user  %>
-        </th>
-    <th><%= link_to @book.title %></th>
-    <th><%= @book.body %></th>
-    
-    <th><%= link_to "Edit", edit_book_path(@book.id) %></th>
-    
-    <% if @book.user == current_user %>
-    <th><%= link_to "Destroy", book_path(@book), method: :delete %></th>
-    <% end %>
-  </table>
-</div>
-
-
+  <div class="text-success">
+    <%= flash[:alert] %>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <%= render 'list', book: @book_new, user: @book.user %>
+      <div class="col-md-8 offset-md-1">
+      	<h2>Book detail</h2>
+      	<table class="table">
+      	  <tbody>
+      	    <tr>
+              <td>
+                <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                <%= link_to @book.user.name, @book.user %>
+              </td>
+              <td>
+                <%= link_to @book.title %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              <% if @book.user == current_user %>
+                <td>
+                  <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
+                </td>
+                <td>
+                  <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-danger" %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</html>
